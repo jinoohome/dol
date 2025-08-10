@@ -1,103 +1,181 @@
+import { getInvite } from "@/app/lib/invite";
+import SectionTitle from "@/app/components/SectionTitle";
+import Hero from "@/app/components/Hero";
+import Video from "@/app/components/Video";
+import Guestbook from "@/app/components/Guestbook";
+import FloatingBar from "@/app/components/FloatingBar";
+import CopyLink from "@/app/components/CopyLink";
+import { formatKoreanDate } from "@/app/lib/format";
 import Image from "next/image";
 
-export default function Home() {
-  return (
-    <div className="font-sans grid grid-rows-[20px_1fr_20px] items-center justify-items-center min-h-screen p-8 pb-20 gap-16 sm:p-20">
-      <main className="flex flex-col gap-[32px] row-start-2 items-center sm:items-start">
-        <Image
-          className="dark:invert"
-          src="/next.svg"
-          alt="Next.js logo"
-          width={180}
-          height={38}
-          priority
-        />
-        <ol className="font-mono list-inside list-decimal text-sm/6 text-center sm:text-left">
-          <li className="mb-2 tracking-[-.01em]">
-            Get started by editing{" "}
-            <code className="bg-black/[.05] dark:bg-white/[.06] font-mono font-semibold px-1 py-0.5 rounded">
-              app/page.tsx
-            </code>
-            .
-          </li>
-          <li className="tracking-[-.01em]">
-            Save and see your changes instantly.
-          </li>
-        </ol>
+export default async function Page() {
+  const invite = await getInvite();
+  const partyDate = invite.event.date;
+  const birthday = invite.baby.birthDate;
 
-        <div className="flex gap-4 items-center flex-col sm:flex-row">
-          <a
-            className="rounded-full border border-solid border-transparent transition-colors flex items-center justify-center bg-foreground text-background gap-2 hover:bg-[#383838] dark:hover:bg-[#ccc] font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 sm:w-auto"
-            href="https://vercel.com/new?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <Image
-              className="dark:invert"
-              src="/vercel.svg"
-              alt="Vercel logomark"
-              width={20}
-              height={20}
-            />
-            Deploy now
-          </a>
-          <a
-            className="rounded-full border border-solid border-black/[.08] dark:border-white/[.145] transition-colors flex items-center justify-center hover:bg-[#f2f2f2] dark:hover:bg-[#1a1a1a] hover:border-transparent font-medium text-sm sm:text-base h-10 sm:h-12 px-4 sm:px-5 w-full sm:w-auto md:w-[158px]"
-            href="https://nextjs.org/docs?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            Read our docs
-          </a>
+  return (
+    <div className="font-sans min-h-screen">
+      <Hero name={invite.baby.name} cover={invite.media.cover} eventDate={partyDate} showDday={invite.options?.showDday} />
+
+      <section className="section container">
+        <SectionTitle>초대 인사말</SectionTitle>
+        <div className="card p-8 shadow-soft text-center">
+          {/* 초대 인사말 이미지 추가 */}
+          <div className="flex justify-center mb-6">
+            <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[400px] lg:w-96 lg:h-[480px] overflow-hidden rounded-2xl">
+              <Image 
+                src="/images/woojin-04.jpg" 
+                alt="우진이 초대 인사" 
+                fill 
+                sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px" 
+                style={{ objectFit: "contain" }} 
+                className="transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          </div>
+          
+          <div className="text-lg leading-relaxed text-muted space-y-4">
+            <p>
+              소중한 우리 <span className="font-semibold gradient-text">{invite.baby.name}</span>이<br />
+              첫돌을 맞이했습니다.
+            </p>
+            <p>
+              함께해 주시면 더없이<br />
+              기쁜 날이 될 것입니다.
+            </p>
+            <p>
+              따뜻한 마음으로<br />
+              축복해 주세요. ♡
+            </p>
+          </div>
         </div>
-      </main>
-      <footer className="row-start-3 flex gap-[24px] flex-wrap items-center justify-center">
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org/learn?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/file.svg"
-            alt="File icon"
-            width={16}
-            height={16}
-          />
-          Learn
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://vercel.com/templates?framework=next.js&utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/window.svg"
-            alt="Window icon"
-            width={16}
-            height={16}
-          />
-          Examples
-        </a>
-        <a
-          className="flex items-center gap-2 hover:underline hover:underline-offset-4"
-          href="https://nextjs.org?utm_source=create-next-app&utm_medium=appdir-template-tw&utm_campaign=create-next-app"
-          target="_blank"
-          rel="noopener noreferrer"
-        >
-          <Image
-            aria-hidden
-            src="/globe.svg"
-            alt="Globe icon"
-            width={16}
-            height={16}
-          />
-          Go to nextjs.org →
-        </a>
+      </section>
+
+      <section className="section container">
+        <SectionTitle>아기 소개</SectionTitle>
+        <div className="card p-6 shadow-soft">
+          {/* 아기 사진 추가 */}
+          <div className="flex justify-center mb-6">
+            <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[400px] lg:w-96 lg:h-[480px] overflow-hidden rounded-2xl">
+              <Image 
+                src="/images/woojin-03.jpg" 
+                alt={`${invite.baby.name} 소개`} 
+                fill 
+                sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px" 
+                style={{ objectFit: "contain" }} 
+                className="transition-transform duration-300 hover:scale-105"
+              />
+            </div>
+          </div>
+          
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+              <span className="text-muted font-medium">이름</span>
+              <span className="font-semibold gradient-text text-right sm:text-left sm:max-w-[60%]">최우진</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+              <span className="text-muted font-medium">생일</span>
+              <span className="font-medium text-right sm:text-left sm:max-w-[60%]">{formatKoreanDate(birthday)}</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+              <span className="text-muted font-medium">돌잔치</span>
+              <span className="font-medium text-right sm:text-left sm:max-w-[60%]">{formatKoreanDate(partyDate)} {invite.event.time}</span>
+            </div>
+          </div>
+          {invite.baby.story ? (
+            <div className="mt-6 pt-6 border-t border-brand/20">
+              <p className="text-center text-muted italic leading-relaxed">&ldquo;{invite.baby.story}&rdquo;</p>
+            </div>
+          ) : null}
+        </div>
+      </section>
+
+      <section className="section container">
+        <SectionTitle>행사 정보</SectionTitle>
+        <div className="card p-6 shadow-soft">
+          <div className="space-y-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+              <span className="text-muted font-medium">일시</span>
+              <span className="font-medium text-right sm:text-left sm:max-w-[60%]">{formatKoreanDate(partyDate)} {invite.event.time}</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+              <span className="text-muted font-medium">장소</span>
+              <span className="font-semibold text-right sm:text-left sm:max-w-[60%]">{invite.event.venue.name}</span>
+            </div>
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+              <span className="text-muted font-medium">주소</span>
+              <span className="text-sm text-right sm:text-left sm:max-w-[60%] break-words">{invite.event.venue.address}</span>
+            </div>
+            {invite.event.venue.parking ? (
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+                <span className="text-muted font-medium">주차</span>
+                <span className="text-sm text-right sm:text-left sm:max-w-[60%] break-words">{invite.event.venue.parking}</span>
+              </div>
+            ) : null}
+            {invite.event.venue.notes ? (
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
+                <span className="text-muted font-medium">위치</span>
+                <span className="text-sm text-right sm:text-left sm:max-w-[60%] break-words">{invite.event.venue.notes}</span>
+              </div>
+            ) : null}
+          </div>
+        </div>
+      </section>
+
+      {/* {invite.media.gallery?.length ? (
+        <section className="section container">
+          <SectionTitle>소중한 순간들</SectionTitle>
+          <Gallery images={invite.media.gallery} />
+        </section>
+      ) : null} */}
+      
+      {invite.media.video ? <Video url={invite.media.video.url} thumbnail={invite.media.video.thumbnail} /> : null}
+
+      <section className="section container">
+        <SectionTitle>연락하기</SectionTitle>
+        <div className="card p-6 shadow-soft text-center">
+          <p className="text-muted mb-6">궁금한 점이 있으시면 언제든 연락주세요</p>
+          
+          <div className="space-y-4">
+            <div>
+              <p className="text-sm text-muted mb-2">아빠 ({invite.parents.dad})</p>
+              <div className="flex gap-3 justify-center">
+                <a className="btn btn-outline" href={`tel:${invite.parents.dadPhone}`}>
+                  📞 전화하기
+                </a>
+                <a className="btn btn-outline" href={`sms:${invite.parents.dadPhone}`}>
+                  💬 문자하기
+                </a>
+              </div>
+            </div>
+            
+            <div>
+              <p className="text-sm text-muted mb-2">엄마 ({invite.parents.mom})</p>
+              <div className="flex gap-3 justify-center">
+                <a className="btn btn-outline" href={`tel:${invite.parents.momPhone}`}>
+                  📞 전화하기
+                </a>
+                <a className="btn btn-outline" href={`sms:${invite.parents.momPhone}`}>
+                  💬 문자하기
+                </a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <Guestbook enabled={invite.options?.guestbook} />
+
+      <footer className="section container pb-32">
+        <div className="card p-6 shadow-soft">
+          <div className="flex items-center justify-between text-sm">
+            <CopyLink />
+            <a className="text-muted hover:text-brand transition-colors underline" href="#">개인정보 처리 안내</a>
+          </div>
+        </div>
       </footer>
+
+      <FloatingBar mapUrl={invite.map?.kakao || invite.map?.naver} />
     </div>
   );
 }

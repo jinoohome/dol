@@ -1,0 +1,39 @@
+{
+  "invite": {
+    "baby": { "name": "우진", "birthDate": "2024-10-08", "story": "사랑으로 쑥쑥 자라고 있어요." },
+    "parents": { "mom": "조은정", "dad": "최진형", "momPhone": "010-7134-6262", "dadPhone": "010-9497-6266" },
+    "event": {
+      "date": "2025-09-28",
+      "time": "12:00",
+      "venue": {
+        "name": "전문건설회관 30층",
+        "address": "서울 동작구 보라매로5길 15",
+        "phone": "02-123-4567",
+        "parking": "건물내 주차시 주말 3시간 무료",
+        "notes": "신림선 보라매병원(전문건설회관역) / 보라매공원, 보라매병원 인근"
+      }
+    },
+    "map": {
+      "naver": "https://map.naver.com/v5/search/%EC%84%9C%EC%9A%B8%20%EB%8F%99%EC%9E%91%EA%B5%AC%20%EB%B3%B4%EB%9D%BC%EB%A7%A4%EB%A1%9C5%EA%B8%B8%2015",
+      "kakao": "https://map.kakao.com/?q=%EC%84%9C%EC%9A%B8%20%EB%8F%99%EC%9E%91%EA%B5%AC%20%EB%B3%B4%EB%9D%BC%EB%A7%A4%EB%A1%9C5%EA%B8%B8%2015",
+      "lat": 37.4875,
+      "lng": 126.9227
+    },
+    "media": {
+      "cover": "/images/cover.jpg",
+      "gallery": [
+        "/images/g1.svg",
+        "/images/g2.svg",
+        "/images/g3.svg",
+        "/images/g4.svg",
+        "/images/g5.svg",
+        "/images/g6.svg"
+      ]
+    },
+    "bank": {
+      "brideSide": [{ "bank": "국민", "owner": "김서연", "account": "123456-01-000000" }],
+      "groomSide": [{ "bank": "신한", "owner": "최민수", "account": "110-000-000000" }]
+    },
+    "options": { "guestbook": false, "bgm": false, "showDday": true }
+  }
+} 

@@ -5,6 +5,7 @@ import Video from "@/app/components/Video";
 import Guestbook from "@/app/components/Guestbook";
 import FloatingBar from "@/app/components/FloatingBar";
 import CopyLink from "@/app/components/CopyLink";
+import LoadingScreen from "@/app/components/LoadingScreen";
 import { formatKoreanDate } from "@/app/lib/format";
 import Image from "next/image";
 
@@ -14,8 +15,10 @@ export default async function Page() {
   const birthday = invite.baby.birthDate;
 
   return (
-    <div className="font-sans min-h-screen">
-      <Hero name={invite.baby.name} cover={invite.media.cover} eventDate={partyDate} showDday={invite.options?.showDday} />
+    <>
+      <LoadingScreen />
+      <div className="font-sans min-h-screen">
+        <Hero name={invite.baby.name} cover={invite.media.cover} eventDate={partyDate} showDday={invite.options?.showDday} />
 
       <section className="section container">
         <SectionTitle>초대 인사말</SectionTitle>
@@ -71,7 +74,7 @@ export default async function Page() {
           <div className="space-y-4">
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInRight animate-delay-700">
               <span className="text-muted font-medium">이름</span>
-              <span className="font-semibold gradient-text text-right sm:text-left sm:max-w-[60%] animate-heartBeat">최우진</span>
+              <span className="font-semibold gradient-text text-right sm:text-left sm:max-w-[60%]">최우진</span>
             </div>
             <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInRight animate-delay-700">
               <span className="text-muted font-medium">생일</span>
@@ -178,6 +181,7 @@ export default async function Page() {
       </footer>
 
       <FloatingBar mapUrl={invite.map?.kakao || invite.map?.naver} />
-    </div>
+      </div>
+    </>
   );
 }

@@ -568,3 +568,7 @@ body {
 .info-item:last-child {
   border-bottom: none;
 }
+
+.animate-reverse {
+  animation-direction: reverse;
+}

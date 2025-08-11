@@ -15,8 +15,8 @@ export default function Hero({
   return (
     <section className="relative">
       <div className="floating-hearts animate-sparkle"></div>
-      <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/20] lg:aspect-[4/5] overflow-hidden hero-image animate-scaleIn">
-        <Image src={cover} alt={`${name} 커버`} fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+      <div className="relative w-full max-w-2xl mx-auto aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/20] lg:aspect-[4/5] overflow-hidden hero-image animate-scaleIn">
+        <Image src={cover} alt={`${name} 커버`} fill priority sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 672px, 672px" style={{ objectFit: "cover" }} />
         
         {/* Overlay Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 sm:pb-20 md:pb-28 pointer-events-none">

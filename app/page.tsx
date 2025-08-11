@@ -5,7 +5,7 @@ import Video from "@/app/components/Video";
 import Guestbook from "@/app/components/Guestbook";
 import FloatingBar from "@/app/components/FloatingBar";
 import CopyLink from "@/app/components/CopyLink";
-import LoadingScreen from "@/app/components/LoadingScreen";
+import ClientWrapper from "@/app/components/ClientWrapper";
 import { formatKoreanDate } from "@/app/lib/format";
 import Image from "next/image";
 
@@ -15,8 +15,7 @@ export default async function Page() {
   const birthday = invite.baby.birthDate;
 
   return (
-    <>
-      <LoadingScreen />
+    <ClientWrapper>
       <div className="font-sans min-h-screen">
         <Hero name={invite.baby.name} cover={invite.media.cover} eventDate={partyDate} showDday={invite.options?.showDday} />
 
@@ -182,6 +181,6 @@ export default async function Page() {
 
       <FloatingBar mapUrl={invite.map?.kakao || invite.map?.naver} />
       </div>
-    </>
+    </ClientWrapper>
   );
 }

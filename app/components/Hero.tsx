@@ -5,11 +5,15 @@ export default function Hero({
   name,
   cover,
   eventDate,
+  eventTime,
+  venue,
   showDday,
 }: {
   name: string;
   cover: string;
   eventDate: string;
+  eventTime?: string;
+  venue?: string;
   showDday?: boolean;
 }) {
   return (
@@ -18,9 +22,19 @@ export default function Hero({
       <div className="relative w-full max-w-2xl mx-auto aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/20] lg:aspect-[4/5] overflow-hidden hero-image animate-scaleIn">
         <Image src={cover} alt={`${name} 커버`} fill priority sizes="(max-width: 640px) 100vw, (max-width: 768px) 100vw, (max-width: 1024px) 672px, 672px" style={{ objectFit: "cover" }} />
         
+        {/* Date Badge - Top Right */}
+        {eventDate && (
+          <div className="absolute top-4 right-4 sm:top-6 sm:right-6 animate-bounceIn animate-delay-500">
+            <div className="bg-white/90 backdrop-blur-sm text-gray-800 rounded-full w-16 h-16 sm:w-18 sm:h-18 flex flex-col items-center justify-center text-sm font-bold shadow-lg border border-white/50">
+              <div className="text-xs text-gray-600">{new Date(eventDate).getMonth() + 1}</div>
+              <div className="text-lg leading-none">{new Date(eventDate).getDate()}</div>
+            </div>
+          </div>
+        )}
+        
         {/* Overlay Text */}
         <div className="absolute inset-0 flex flex-col items-center justify-end pb-16 sm:pb-20 md:pb-28 pointer-events-none">
-          <div className="text-center space-y-0 animate-fadeInUp animate-delay-1000">
+          <div className="text-center space-y-2 animate-fadeInUp animate-delay-1000">
             <h2 
               className="text-2xl sm:text-3xl md:text-4xl text-black animate-bounce" 
               style={{ 
@@ -37,6 +51,27 @@ export default function Hero({
             >
               1st Birthday Party
             </h1>
+            
+            {/* Event Info */}
+            {(eventDate || eventTime || venue) && (
+              <div className="mt-4 space-y-1 text-black/80 animate-fadeInUp animate-delay-1200">
+                {eventDate && (
+                  <div className="text-sm sm:text-base font-medium">
+                    {new Date(eventDate).toLocaleDateString('ko-KR', { 
+                      year: 'numeric', 
+                      month: 'long', 
+                      day: 'numeric',
+                      weekday: 'short'
+                    })} {eventTime}
+                  </div>
+                )}
+                {venue && (
+                  <div className="text-xs sm:text-sm">
+                    {venue}
+                  </div>
+                )}
+              </div>
+            )}
           </div>
         </div>
       </div>

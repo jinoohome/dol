@@ -6,6 +6,7 @@ import Guestbook from "@/app/components/Guestbook";
 import FloatingBar from "@/app/components/FloatingBar";
 import CopyLink from "@/app/components/CopyLink";
 import ClientWrapper from "@/app/components/ClientWrapper";
+import Calendar from "@/app/components/Calendar";
 import { formatKoreanDate } from "@/app/lib/format";
 import Image from "next/image";
 
@@ -17,7 +18,14 @@ export default async function Page() {
   return (
     <ClientWrapper>
       <div className="font-sans min-h-screen">
-        <Hero name={invite.baby.name} cover={invite.media.cover} eventDate={partyDate} showDday={invite.options?.showDday} />
+        <Hero 
+          name={invite.baby.name} 
+          cover={invite.media.cover} 
+          eventDate={partyDate} 
+          eventTime={invite.event.time}
+          venue={invite.event.venue.name}
+          showDday={invite.options?.showDday} 
+        />
 
       <section className="section container">
         <SectionTitle>초대 인사말</SectionTitle>
@@ -54,72 +62,63 @@ export default async function Page() {
       </section>
 
       <section className="section container">
-        <SectionTitle>아기 소개</SectionTitle>
-        <div className="card p-6 shadow-soft animate-fadeInLeft animate-delay-300 hover-lift">
-          {/* 아기 사진 추가 */}
-          <div className="flex justify-center mb-6">
-            <div className="relative w-64 h-80 sm:w-72 sm:h-96 md:w-80 md:h-[400px] lg:w-96 lg:h-[480px] overflow-hidden rounded-2xl animate-rotateIn animate-delay-500">
-              <Image 
-                src="/images/woojin-03.jpg" 
-                alt={`우진 소개`} 
-                fill 
-                sizes="(max-width: 640px) 256px, (max-width: 768px) 288px, (max-width: 1024px) 320px, 384px" 
-                style={{ objectFit: "contain" }} 
-                className="transition-transform duration-300 hover:scale-105"
+        <SectionTitle>우진이와 함께하는 특별한 날</SectionTitle>
+        <div className="card p-8 shadow-soft animate-fadeInUp animate-delay-300 hover-lift">
+          <div className="grid lg:grid-cols-2 gap-8">
+            {/* 아기 소개 섹션 */}
+            <div>
+              {/* 아기 사진 */}
+              <div className="flex justify-center mb-6">
+                <div className="relative w-48 h-60 sm:w-56 sm:h-72 md:w-64 md:h-80 overflow-hidden rounded-2xl animate-rotateIn animate-delay-500">
+                  <Image 
+                    src="/images/woojin-03.jpg" 
+                    alt={`우진 소개`} 
+                    fill 
+                    sizes="(max-width: 640px) 192px, (max-width: 768px) 224px, 256px" 
+                    style={{ objectFit: "contain" }} 
+                    className="transition-transform duration-300 hover:scale-105"
+                  />
+                </div>
+              </div>
+              
+
+              {invite.baby.story ? (
+                <div className="mt-6 animate-slideInUp animate-delay-1000">
+                  <p className="text-center text-muted italic leading-relaxed">&ldquo;{invite.baby.story}&rdquo;</p>
+                </div>
+              ) : null}
+            </div>
+
+            {/* 달력 컴포넌트 */}
+            <div className="animate-fadeInRight animate-delay-500">
+              <Calendar 
+                eventDate={partyDate} 
+                eventTime={invite.event.time}
+                venue={invite.event.venue.name}
               />
             </div>
           </div>
-          
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInRight animate-delay-700">
-              <span className="text-muted font-medium">이름</span>
-              <span className="font-semibold gradient-text text-right sm:text-left sm:max-w-[60%]">최우진</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInRight animate-delay-700">
-              <span className="text-muted font-medium">생일</span>
-              <span className="font-medium text-right sm:text-left sm:max-w-[60%]">{formatKoreanDate(birthday)}</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInRight animate-delay-1000">
-              <span className="text-muted font-medium">돌잔치</span>
-              <span className="font-medium text-right sm:text-left sm:max-w-[60%] animate-bounce">{formatKoreanDate(partyDate)} {invite.event.time}</span>
-            </div>
-          </div>
-          {invite.baby.story ? (
-            <div className="mt-6 pt-6 border-t border-brand/20 animate-slideInUp animate-delay-1000">
-              <p className="text-center text-muted italic leading-relaxed">&ldquo;{invite.baby.story}&rdquo;</p>
-            </div>
-          ) : null}
         </div>
-      </section>
 
-      <section className="section container">
-        <SectionTitle>행사 정보</SectionTitle>
-        <div className="card p-6 shadow-soft animate-fadeInRight animate-delay-200 hover-glow">
-          <div className="space-y-4">
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInUp animate-delay-300">
-              <span className="text-muted font-medium">일시</span>
-              <span className="font-medium text-right sm:text-left sm:max-w-[60%]">{formatKoreanDate(partyDate)} {invite.event.time}</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInUp animate-delay-500">
-              <span className="text-muted font-medium">장소</span>
-              <span className="font-semibold text-right sm:text-left sm:max-w-[60%]">{invite.event.venue.name}</span>
-            </div>
-            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInUp animate-delay-700">
+        {/* 추가 행사 정보 */}
+        <div className="mt-8 card p-6 shadow-soft animate-fadeInUp animate-delay-700 hover-glow">
+          <div className="grid sm:grid-cols-2 gap-4">
+            <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
               <span className="text-muted font-medium">주소</span>
-              <span className="text-sm text-right sm:text-left sm:max-w-[60%] break-words">{invite.event.venue.address}</span>
+              <span className="text-sm text-right sm:text-left sm:max-w-[70%] break-words">{invite.event.venue.address}</span>
             </div>
-            {invite.event.venue.parking ? (
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInUp animate-delay-700">
+            {invite.event.venue.parking && (
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap">
                 <span className="text-muted font-medium">주차</span>
-                <span className="text-sm text-right sm:text-left sm:max-w-[60%] break-words">{invite.event.venue.parking}</span>
+                <span className="text-sm text-right sm:text-left sm:max-w-[70%] break-words">{invite.event.venue.parking}</span>
               </div>
-            ) : null}
-            {invite.event.venue.notes ? (
-              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap animate-fadeInUp animate-delay-1000">
-                <span className="text-muted font-medium">위치</span>
-                <span className="text-sm text-right sm:text-left sm:max-w-[60%] break-words">{invite.event.venue.notes}</span>
+            )}
+            {invite.event.venue.notes && (
+              <div className="flex flex-col sm:flex-row sm:justify-between sm:items-start gap-1 sm:gap-2 sm:flex-wrap sm:col-span-2">
+                <span className="text-muted font-medium">위치 안내</span>
+                <span className="text-sm text-right sm:text-left sm:max-w-[70%] break-words">{invite.event.venue.notes}</span>
               </div>
-            ) : null}
+            )}
           </div>
         </div>
       </section>

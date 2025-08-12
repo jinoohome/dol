@@ -22,9 +22,8 @@ export default async function Page() {
           name={invite.baby.name} 
           cover={invite.media.cover} 
           eventDate={partyDate} 
-          eventTime={invite.event.time}
-          venue={invite.event.venue.name}
           showDday={invite.options?.showDday} 
+          venue={invite.event.venue.address}
         />
 
       <section className="section container">
@@ -84,7 +83,7 @@ export default async function Page() {
 
               {invite.baby.story ? (
                 <div className="mt-6 animate-slideInUp animate-delay-1000">
-                  <p className="text-center text-muted italic leading-relaxed">&ldquo;{invite.baby.story}&rdquo;</p>
+                  <p className="text-center text-muted italic leading-relaxed whitespace-pre-line">&ldquo;{invite.baby.story}&rdquo;</p>
                 </div>
               ) : null}
             </div>

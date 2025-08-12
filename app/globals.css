@@ -814,3 +814,17 @@ body {
 .animate-delay-1500 {
   animation-delay: 1.5s;
 }
+
+/* 마키 애니메이션 */
+@keyframes marquee {
+  0% {
+    transform: translateX(100%);
+  }
+  100% {
+    transform: translateX(-100%);
+  }
+}
+
+.animate-marquee {
+  animation: marquee 10s linear infinite;
+}

@@ -42,7 +42,7 @@ export default function Loading() {
 
   return (
     <div className="fixed inset-0 z-50 flex items-center justify-center bg-gradient-to-br from-background via-pink-50 to-blue-50 loading-overlay">
-      <div className="text-center space-y-8 animate-fadeInUp">
+      <div className="text-center space-y-8">
         {/* 메인 로고/타이틀 */}
         <div className="space-y-4">
           <div className="relative">
@@ -66,7 +66,16 @@ export default function Loading() {
           <div className="relative">
             <div className="w-20 h-20 border-4 border-brand/20 rounded-full animate-spin loading-ring"></div>
             <div className="absolute inset-0 w-20 h-20 border-4 border-transparent border-t-brand rounded-full animate-spin loading-ring-active"></div>
-            <div className="absolute inset-3 w-14 h-14 bg-gradient-to-r from-brand to-point rounded-full animate-pulse"></div>
+            <div className="absolute inset-0 flex items-center justify-center">
+              <div className="text-6xl animate-heartBeat" style={{ 
+                background: 'linear-gradient(to right, var(--brand-main), var(--brand-point))',
+                WebkitBackgroundClip: 'text',
+                WebkitTextFillColor: 'transparent',
+                backgroundClip: 'text'
+              }}>
+                ♥
+              </div>
+            </div>
           </div>
         </div>
 
@@ -87,10 +96,10 @@ export default function Loading() {
         </div>
 
         {/* 로딩 메시지 */}
-        <div className="space-y-4 animate-fadeInUp animate-delay-500 min-h-[60px]">
+        <div className="space-y-4 min-h-[60px]">
           <p 
             key={messageIndex}
-            className="text-muted animate-fadeInUp text-lg font-medium"
+            className="text-muted text-lg font-medium"
           >
             {loadingMessages[messageIndex]}
           </p>

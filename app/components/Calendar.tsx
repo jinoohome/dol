@@ -26,7 +26,7 @@ export default function Calendar({ eventDate, eventTime, venue }: CalendarProps)
   const monthName = date.toLocaleDateString('ko-KR', { month: 'long' });
   
   return (
-    <div className="bg-white rounded-2xl p-4 animate-fadeInUp animate-delay-300">
+    <div className="bg-white rounded-2xl animate-fadeInUp animate-delay-300 w-80">
       {/* 달력 헤더 */}
       <div className="text-center mb-4">
         <h3 className="text-xl font-bold text-gray-800 mb-1">
@@ -89,7 +89,7 @@ export default function Calendar({ eventDate, eventTime, venue }: CalendarProps)
         {/* 움직이는 D-Day 텍스트 */}
         <div className="relative overflow-hidden bg-gradient-to-r from-pink-400 to-purple-500 rounded-full py-2 px-4 w-full">
           <div className="animate-marquee whitespace-nowrap text-center">
-            <span className="text-white text-sm font-bold">
+            <span className="text-white text-base sm:text-lg" style={{ fontFamily: "Paperlogy-6SemiBold, sans-serif" }}>
               🎉 우진이의 생일파티가 {(() => {
                 const today = new Date();
                 const targetDate = new Date(eventDate);

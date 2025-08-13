@@ -8,6 +8,13 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
   const [isReady, setIsReady] = useState(false);
 
   useEffect(() => {
+    // 로딩 중 스크롤 방지 - 클래스 기반으로 변경
+    if (isLoading) {
+      document.body.classList.add('loading');
+    } else {
+      document.body.classList.remove('loading');
+    }
+
     // 최소 로딩 시간 보장 (UX 향상)
     const minLoadTime = 5000; // 5초로 연장
     const startTime = Date.now();
@@ -31,8 +38,10 @@ export default function ClientWrapper({ children }: { children: React.ReactNode 
 
     return () => {
       window.removeEventListener('load', handleLoad);
+      // 컴포넌트 언마운트 시 클래스 제거
+      document.body.classList.remove('loading');
     };
-  }, []);
+  }, [isLoading]);
 
   return (
     <>

@@ -13,32 +13,32 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    date: "2024.10.08",  // ✅ 이미 올바름
+    date: "2024.10.08",
     title: "세상에 나온 날",
     description: "우진이가 우리 곁에 왔어요",
     milestone: "👶",
-    image: "/images/woojin/woojin-06.jpg"  // ✅ 유지
+    image: "/images/woojin/woojin-06.jpg"
   },
   {
-    date: "2024.11.27",  // 🔄 변경: 2024.01.06 → 2024.11.27
-    title: "50일 후",   // 🔄 변경: "100일 후" → "50일 후"
-    description: "건강하게 50일을 맞이했어요",  // 🔄 변경
+    date: "2024.11.26",
+    title: "50일 후",
+    description: "건강하게 50일을 맞이했어요",
     milestone: "😊",
-    image: "/images/woojin/woojin-07.jpg"  // ✅ 유지
+    image: "/images/woojin/woojin-07.jpg"
   },
   {
-    date: "2025.01.16",  // 🔄 변경: 2024.03.16 → 2025.01.16
-    title: "100일 후",  // 🔄 변경: "첫번째 걸음이 지나고" → "100일 후"
-    description: "건강하게 100일을 맞이했어요",  // 🔄 변경
-    milestone: "🍼",    // 🔄 변경: 🚼 → 🍼
-    image: "/images/woojin/woojin-08.jpg"  // ✅ 유지
+    date: "2025.01.15",
+    title: "100일 후",
+    description: "건강하게 100일을 맞이했어요",
+    milestone: "🍼",
+    image: "/images/woojin/woojin-08.jpg"
   },
   {
-    date: "2025.04.26",  // 🔄 변경: 2024.09.28 → 2025.04.26
-    title: "200일 후",  // 🔄 변경: "첫 돌잔치" → "200일 후"
-    description: "쑥쑥 자라서 200일을 맞이했어요",  // 🔄 변경
-    milestone: "🚼",    // ✅ 유지
-    image: "/images/woojin/woojin-09.jpg"  // ✅ 유지
+    date: "2025.04.25",
+    title: "200일 후",
+    description: "쑥쑥 자라서 200일을 맞이했어요",
+    milestone: "🚼",
+    image: "/images/woojin/woojin-09.jpg"
   },
   {
     date: "2025.08.03",

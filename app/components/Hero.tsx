@@ -72,17 +72,19 @@ export default function Hero({
         <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
           <div className="flex items-center justify-center gap-8">
             <span 
-              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black drop-shadow-lg animate-fadeInDown"
+              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-700 drop-shadow-lg animate-fadeInDown"
               style={{ 
-                fontFamily: "Shilla_CultureB-Bold, serif"
+                fontFamily: "'Shilla_CultureB-Bold', 'InkLipquid', 'GowunBatang-Regular', serif",
+                fontWeight: 700
               }}
             >
               첫
             </span>
             <span 
-              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black drop-shadow-lg animate-fadeInDown animate-delay-200"
+              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-gray-700 drop-shadow-lg animate-fadeInDown animate-delay-200"
               style={{ 
-                fontFamily: "Shilla_CultureB-Bold, serif"
+                fontFamily: "'Shilla_CultureB-Bold', 'InkLipquid', 'GowunBatang-Regular', serif",
+                fontWeight: 700
               }}
             >
               돌

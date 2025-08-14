@@ -41,7 +41,7 @@ const timelineData: TimelineItem[] = [
     image: "/images/woojin/woojin-09.jpg"  // ✅ 유지
   },
   {
-    date: "2025.08.04",
+    date: "2025.08.03",
     title: "300일 후",
     description: "건강하게 자라서 300일을 맞이했어요",
     milestone: "🎈",

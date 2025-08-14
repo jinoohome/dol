@@ -35,6 +35,13 @@
   font-style: normal;
 }
 
+@font-face {
+  font-family: 'Shilla_CultureB-Bold';
+  src: url('https://fastly.jsdelivr.net/gh/projectnoonnu/noonfonts_2206-02@1.0/Shilla_CultureB-Bold.woff2') format('woff2');
+  font-weight: 700;
+  font-style: normal;
+}
+
 :root {
   --bg: #FFF9F5; /* Ivory */
   --fg: #444444; /* Text primary */
@@ -915,3 +922,48 @@ body.loading {
   overflow-wrap: break-word;
   hyphens: none;
 }
+
+/* Hero 이미지 부드러운 등장 애니메이션 */
+@keyframes gentleEntrance {
+  0% {
+    opacity: 0;
+    transform: scale(0.95) translateY(20px);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) translateY(0);
+  }
+}
+
+.animate-gentleEntrance {
+  animation: gentleEntrance 1.2s ease-out forwards;
+}
+
+/* 파티클 반짝이는 효과 */
+@keyframes sparkleIn {
+  0% {
+    opacity: 0;
+    transform: scale(0) rotate(0deg);
+  }
+  100% {
+    opacity: 1;
+    transform: scale(1) rotate(0deg);
+  }
+}
+
+@keyframes sparkle {
+  0%, 100% {
+    opacity: 0.3;
+    transform: scale(1);
+  }
+  50% {
+    opacity: 0.6;
+    transform: scale(1.2);
+  }
+}
+
+.animate-sparkleIn {
+  animation: sparkleIn 0.8s ease-out forwards, sparkle 2s ease-in-out infinite 0.8s;
+}
+
+

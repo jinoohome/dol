@@ -68,9 +68,57 @@ export default function Hero({
       />
       
       <section className="relative">
+        {/* 첫돌 타이틀 */}
+        <div className="absolute top-4 left-1/2 transform -translate-x-1/2 z-20">
+          <div className="flex items-center justify-center gap-8">
+            <span 
+              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black drop-shadow-lg animate-fadeInDown"
+              style={{ 
+                fontFamily: "Shilla_CultureB-Bold, serif"
+              }}
+            >
+              첫
+            </span>
+            <span 
+              className="text-5xl sm:text-5xl md:text-6xl lg:text-7xl font-bold text-black drop-shadow-lg animate-fadeInDown animate-delay-200"
+              style={{ 
+                fontFamily: "Shilla_CultureB-Bold, serif"
+              }}
+            >
+              돌
+            </span>
+          </div>
+        </div>
+        
         <div className="floating-hearts animate-sparkle"></div>
-        <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/20] lg:aspect-[4/5] overflow-hidden hero-image animate-scaleIn">
-          <Image src={cover} alt={`${name} 커버`} fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+        <div className="relative w-full aspect-[4/5] sm:aspect-[3/4] md:aspect-[16/20] lg:aspect-[4/5] overflow-hidden hero-image">
+          {/* 이미지 컨테이너 - 부드러운 애니메이션 */}
+          <div className="relative w-full h-full animate-gentleEntrance">
+            <Image src={cover} alt={`${name} 커버`} fill priority sizes="100vw" style={{ objectFit: "cover" }} />
+            
+            {/* 부드러운 오버레이 효과 */}
+            <div className="absolute inset-0 bg-gradient-to-t from-black/10 via-transparent to-transparent animate-fadeIn animate-delay-800"></div>
+            
+            {/* 반짝이는 파티클 효과 */}
+            <div className="absolute top-10 left-10 w-3 h-3 bg-yellow-400 rounded-full animate-sparkleIn animate-delay-1000"></div>
+            <div className="absolute top-20 right-16 w-2 h-2 bg-pink-400 rounded-full animate-sparkleIn animate-delay-1200"></div>
+            <div className="absolute bottom-20 left-20 w-4 h-4 bg-purple-400 rounded-full animate-sparkleIn animate-delay-1400"></div>
+            <div className="absolute bottom-32 right-12 w-2 h-2 bg-blue-400 rounded-full animate-sparkleIn animate-delay-1600"></div>
+            <div className="absolute top-1/2 left-1/4 w-3 h-3 bg-green-400 rounded-full animate-sparkleIn animate-delay-1800"></div>
+            <div className="absolute top-1/3 right-1/3 w-2 h-2 bg-red-400 rounded-full animate-sparkleIn animate-delay-2000"></div>
+            
+            {/* 부모님 이름 */}
+            <div className="absolute bottom-4 left-4 animate-fadeInUp animate-delay-2200">
+              <p className="text-sm font-medium text-white drop-shadow-lg">
+                아빠 최진형
+              </p>
+            </div>
+            <div className="absolute bottom-4 right-4 animate-fadeInUp animate-delay-2400">
+              <p className="text-sm font-medium text-white drop-shadow-lg">
+                엄마 조은정
+              </p>
+            </div>
+          </div>
           
           {/* Venue Copy Button */}
           <div className="absolute bottom-16 right-3 z-10">
@@ -177,4 +225,4 @@ export default function Hero({
       </section>
     </>
   );
-} 
+}

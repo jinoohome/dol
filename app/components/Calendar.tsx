@@ -1,4 +1,6 @@
-import React from 'react';
+"use client";
+
+import React, { useState, useEffect } from 'react';
 
 interface CalendarProps {
   eventDate: string;
@@ -7,6 +9,42 @@ interface CalendarProps {
 }
 
 export default function Calendar({ eventDate }: CalendarProps) {
+  const [daysLeft, setDaysLeft] = useState<number | null>(null);
+  const [isClient, setIsClient] = useState(false);
+
+  useEffect(() => {
+    setIsClient(true);
+    
+    const calculateDaysLeft = () => {
+      // 한국 시간대로 오늘 날짜 계산
+      const today = new Date();
+      const koreaToday = new Date(today.getTime() + (9 * 60 * 60 * 1000)); // UTC+9
+      const todayString = koreaToday.toISOString().split('T')[0];
+      
+      // 이벤트 날짜 (2025-09-28)
+      const eventDateString = eventDate;
+      
+      // 날짜만 비교 (시간 제외)
+      const todayDate = new Date(todayString);
+      const targetDate = new Date(eventDateString);
+      
+      // 밀리초 차이를 일수로 변환
+      const timeDiff = targetDate.getTime() - todayDate.getTime();
+      const days = Math.ceil(timeDiff / (1000 * 3600 * 24));
+      
+      setDaysLeft(days);
+    };
+
+    calculateDaysLeft();
+  }, [eventDate]);
+
+  const getDayText = () => {
+    if (daysLeft === null) return '계산 중...';
+    if (daysLeft > 0) return `${daysLeft}일`;
+    if (daysLeft === 0) return '오늘';
+    return '지났습니다';
+  };
+
   const date = new Date(eventDate);
   const year = date.getFullYear();
   const month = date.getMonth();
@@ -90,13 +128,7 @@ export default function Calendar({ eventDate }: CalendarProps) {
         <div className="relative overflow-hidden bg-gradient-to-r from-pink-400 to-purple-500 rounded-full py-2 px-4 w-full">
           <div className="animate-marquee whitespace-nowrap text-center">
             <span className="text-white text-base sm:text-lg" style={{ fontFamily: "Paperlogy-6SemiBold, sans-serif" }}>
-              🎉 우진이의 생일파티가 {(() => {
-                const today = new Date();
-                const targetDate = new Date(eventDate);
-                const timeDiff = targetDate.getTime() - today.getTime();
-                const daysLeft = Math.ceil(timeDiff / (1000 * 3600 * 24));
-                return daysLeft > 0 ? `${daysLeft}일` : daysLeft === 0 ? '오늘' : '지났습니다';
-              })()} 남았습니다! 🎂
+              🎉 우진이의 생일파티가 {isClient ? getDayText() : '계산 중...'} 남았습니다! 🎂
             </span>
           </div>
         </div>

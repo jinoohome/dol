@@ -12,7 +12,7 @@ function diff(from: number, to: number) {
 }
 
 export default function Countdown({ date }: { date: string }) {
-  const target = useMemo(() => new Date(date + "T00:00:00").getTime(), [date]);
+  const target = useMemo(() => new Date(date + "T12:00:00").getTime(), [date]);
   const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {

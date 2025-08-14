@@ -189,7 +189,7 @@ export default function Hero({
               {/* Event Info */}
               <div className="mt-4 space-y-1 text-black/80 animate-fadeInUp animate-delay-1200">
                 <div className="text-sm sm:text-base font-medium">
-                  2025년 9월 28일 일요일 12:00                </div>
+                  2025년 9월 28일 일요일 오후 12:00                </div>
                 <div className="text-xs sm:text-sm">
                   전문건설회관 30층 차이30
                 </div>

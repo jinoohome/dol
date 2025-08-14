@@ -3,7 +3,7 @@
 import React, { useState, useEffect } from 'react';
 
 export default function TimeCounter() {
-  const [timeString, setTimeString] = useState('');
+  const [timeString, setTimeString] = useState<string | null>(null);
 
   useEffect(() => {
     const calculateTime = () => {
@@ -42,7 +42,7 @@ export default function TimeCounter() {
       setTimeString(result);
     };
 
-    // 초기 계산
+    // 클라이언트에서만 초기 계산
     calculateTime();
     
     // 1초마다 업데이트
@@ -51,9 +51,18 @@ export default function TimeCounter() {
     return () => clearInterval(interval);
   }, []);
 
+  // 클라이언트에서 hydration이 완료되기 전까지는 로딩 상태 표시
+  if (timeString === null) {
+    return (
+      <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-700">
+        &quot;계산 중...&quot;
+      </p>
+    );
+  }
+
   return (
     <p className="text-xl sm:text-2xl lg:text-3xl font-bold text-gray-700">
-      "{timeString}"
+      &quot;{timeString}&quot;
     </p>
   );
 } 

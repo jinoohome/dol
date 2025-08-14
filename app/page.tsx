@@ -10,13 +10,13 @@ import Calendar from "@/app/components/Calendar";
 import Timeline from "@/app/components/Timeline";
 import TimeCounter from "@/app/components/TimeCounter";
 import ScrollAnimation from "@/app/components/ScrollAnimation";
-import { formatKoreanDate } from "@/app/lib/format";
+
 import Image from "next/image";
 
 export default async function Page() {
   const invite = await getInvite();
   const partyDate = invite.event.date;
-  const birthday = invite.baby.birthDate;
+
 
   return (
     <ClientWrapper>

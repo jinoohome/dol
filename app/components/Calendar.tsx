@@ -6,12 +6,12 @@ interface CalendarProps {
   venue: string;
 }
 
-export default function Calendar({ eventDate, eventTime, venue }: CalendarProps) {
+export default function Calendar({ eventDate }: CalendarProps) {
   const date = new Date(eventDate);
   const year = date.getFullYear();
   const month = date.getMonth();
   const eventDay = date.getDate();
-  const eventDayOfWeek = date.toLocaleDateString('ko-KR', { weekday: 'short' });
+
   
   // 해당 월의 첫 번째 날과 마지막 날
   const firstDay = new Date(year, month, 1);

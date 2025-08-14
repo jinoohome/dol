@@ -13,12 +13,24 @@ function diff(from: number, to: number) {
 
 export default function Countdown({ date }: { date: string }) {
   const target = useMemo(() => new Date(date + "T00:00:00").getTime(), [date]);
-  const [now, setNow] = useState<number>(() => Date.now());
+  const [now, setNow] = useState<number | null>(null);
 
   useEffect(() => {
+    // 클라이언트에서만 현재 시간을 설정
+    setNow(Date.now());
     const id = setInterval(() => setNow(Date.now()), 1000);
     return () => clearInterval(id);
   }, []);
+
+  // 클라이언트에서 hydration이 완료되기 전까지는 로딩 상태 표시
+  if (now === null) {
+    return (
+      <div className="flex items-center gap-3 text-sm text-muted">
+        <span className="px-2 py-1 rounded-md bg-[#fff] border">D-0</span>
+        <span>00:00:00</span>
+      </div>
+    );
+  }
 
   const { days, hours, minutes, seconds } = diff(now, target);
   return (

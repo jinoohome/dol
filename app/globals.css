@@ -905,3 +905,13 @@ body.loading {
 .animate-marquee {
   animation: marquee 10s linear infinite;
 }
+
+/* 한글 텍스트 줄바꿈 최적화 */
+.korean-text {
+  word-break: keep-all;
+  word-wrap: break-word;
+  line-height: 1.6;
+  white-space: pre-wrap;
+  overflow-wrap: break-word;
+  hyphens: none;
+}

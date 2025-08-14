@@ -13,33 +13,40 @@ interface TimelineItem {
 
 const timelineData: TimelineItem[] = [
   {
-    date: "2023.09.28",
+    date: "2024.10.08",  // ✅ 이미 올바름
     title: "세상에 나온 날",
     description: "우진이가 우리 곁에 왔어요",
     milestone: "👶",
-    image: "/images/woojin-04.jpg"
+    image: "/images/woojin/woojin-06.jpg"  // ✅ 유지
   },
   {
-    date: "2024.01.06",
-    title: "100일 후",
-    description: "건강하게 100일을 맞이했어요",
+    date: "2024.11.27",  // 🔄 변경: 2024.01.06 → 2024.11.27
+    title: "50일 후",   // 🔄 변경: "100일 후" → "50일 후"
+    description: "건강하게 50일을 맞이했어요",  // 🔄 변경
     milestone: "😊",
-    image: "/images/woojin-03.jpg"
+    image: "/images/woojin/woojin-07.jpg"  // ✅ 유지
   },
   {
-    date: "2024.03.16",
-    title: "첫번째 걸음이 지나고",
-    description: "이제 혼자서도 걸을 수 있어요",
-    milestone: "🚼",
-    image: "/images/woojin-04.jpg"
+    date: "2025.01.16",  // 🔄 변경: 2024.03.16 → 2025.01.16
+    title: "100일 후",  // 🔄 변경: "첫번째 걸음이 지나고" → "100일 후"
+    description: "건강하게 100일을 맞이했어요",  // 🔄 변경
+    milestone: "🍼",    // 🔄 변경: 🚼 → 🍼
+    image: "/images/woojin/woojin-08.jpg"  // ✅ 유지
   },
   {
-    date: "2024.09.28",
-    title: "첫 돌잔치",
-    description: "건강하게 자라서 첫 돌을 맞이했어요",
-    milestone: "🎂",
-    image: "/images/woojin-03.jpg"
-  }
+    date: "2025.04.26",  // 🔄 변경: 2024.09.28 → 2025.04.26
+    title: "200일 후",  // 🔄 변경: "첫 돌잔치" → "200일 후"
+    description: "쑥쑥 자라서 200일을 맞이했어요",  // 🔄 변경
+    milestone: "🚼",    // ✅ 유지
+    image: "/images/woojin/woojin-09.jpg"  // ✅ 유지
+  },
+  {
+    date: "2025.08.04",
+    title: "300일 후",
+    description: "건강하게 자라서 300일을 맞이했어요",
+    milestone: "🎈",
+    image: "/images/woojin/woojin-10.jpg"
+  },
 ];
 
 export default function Timeline() {
@@ -137,13 +144,13 @@ export default function Timeline() {
 
             {/* 제목과 설명 */}
             <div className={`w-6/12 sm:w-7/12 ${index % 2 === 0 ? 'pl-6 sm:pl-12 lg:pl-16' : 'pr-6 sm:pr-12 lg:pr-16'}`}>
-              <div className="text-center space-y-4 sm:space-y-5 flex flex-col justify-center h-full max-w-lg mx-auto">
-                <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 leading-tight transition-all duration-700 delay-400 ${
+              <div className="text-center space-y-4 sm:space-y-5 flex flex-col justify-center h-full max-w-xs sm:max-w-sm md:max-w-md lg:max-w-lg mx-auto px-2">
+                <h3 className={`text-lg sm:text-xl lg:text-2xl font-bold text-gray-800 leading-tight whitespace-nowrap transition-all duration-700 delay-400 ${
                   visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`} style={{ fontFamily: "Paperlogy-6SemiBold, sans-serif" }}>
                   {item.title}
                 </h3>
-                <p className={`text-base sm:text-lg lg:text-xl text-muted leading-relaxed transition-all duration-700 delay-500 ${
+                <p className={`text-base sm:text-lg lg:text-xl text-muted leading-relaxed korean-text transition-all duration-700 delay-500 ${
                   visibleItems[index] ? 'opacity-100 translate-y-0' : 'opacity-0 translate-y-4'
                 }`}>
                   {item.description}
@@ -155,7 +162,7 @@ export default function Timeline() {
       </div>
 
       {/* 타임라인 끝 장식 */}
-      <div className="flex justify-center mt-20 sm:mt-24 lg:mt-28">
+      <div className="flex justify-center mt-16 sm:mt-20 lg:mt-24">
         <div className="bg-gradient-to-r from-brand via-point to-sub p-4 sm:p-5 rounded-full shadow-lg animate-float">
           <div className="text-2xl sm:text-3xl">🎉</div>
         </div>

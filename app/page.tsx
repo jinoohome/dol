@@ -49,7 +49,7 @@ export default async function Page() {
             
             <div className="text-lg leading-relaxed text-muted space-y-4">
               <p className="text-reveal animate-delay-500">
-                소중한 우리 <span className="font-semibold gradient-text animate-pulse">우진</span>이<br />
+                소중한 우리 <span className="font-semibold gradient-text animate-pulse">우진</span>이가<br />
                 첫돌을 맞이했습니다.
               </p>
               <p className="text-reveal animate-delay-700">

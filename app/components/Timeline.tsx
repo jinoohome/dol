@@ -29,21 +29,21 @@ const timelineData: TimelineItem[] = [
   {
     date: "2025.01.15",
     title: "100일 후",
-    description: "건강하게 100일을 맞이했어요",
+    description: "뒤집기도 하고 장난감을 잡아요",
     milestone: "🍼",
     image: "/images/woojin/woojin-08.jpg"
   },
   {
     date: "2025.04.25",
     title: "200일 후",
-    description: "쑥쑥 자라서 200일을 맞이했어요",
+    description: "웃음소리가 집안을 가득 채워요",
     milestone: "🚼",
     image: "/images/woojin/woojin-09.jpg"
   },
   {
     date: "2025.08.03",
     title: "300일 후",
-    description: "건강하게 자라서 300일을 맞이했어요",
+    description: "안녕, 짝짝꿍, 곤지곤지, 포인팅을 할 수 있어요",
     milestone: "🎈",
     image: "/images/woojin/woojin-10.jpg"
   },

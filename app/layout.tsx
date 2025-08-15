@@ -8,19 +8,44 @@ const gowunBatang = Gowun_Batang({ subsets: ["latin"], weight: ["400", "700"], v
 export const metadata: Metadata = {
   title: "첫돌 초대장 | 우진이의 돌잔치",
   description: "소중한 우리 우진이의 첫돌에 초대합니다.",
+  keywords: ["첫돌", "돌잔치", "초대장", "우진이", "생일", "파티"],
+  authors: [{ name: "우진이 가족" }],
+  icons: {
+    icon: [
+      {
+        url: "/favicon.svg",
+        type: "image/svg+xml",
+      },
+      {
+        url: "/favicon.ico",
+        sizes: "32x32",
+        type: "image/x-icon",
+      },
+    ],
+    shortcut: "/favicon.svg",
+    apple: "/favicon.svg",
+  },
   openGraph: {
     title: "첫돌 초대장 | 우진이의 돌잔치",
     description: "소중한 우리 우진이의 첫돌에 초대합니다.",
     images: [
       {
-        url: "/images/cover.svg",
+        url: "/images/og-image.jpg",
         width: 1200,
         height: 630,
+        alt: "우진이의 첫돌 초대장",
       },
     ],
     type: "website",
+    siteName: "우진이의 첫돌 초대장",
   },
-  metadataBase: new URL("https://example.com"),
+  twitter: {
+    card: "summary_large_image",
+    title: "첫돌 초대장 | 우진이의 돌잔치",
+    description: "소중한 우리 우진이의 첫돌에 초대합니다.",
+    images: ["/images/og-image.jpg"],
+  },
+  metadataBase: new URL("https://dol-project-45f85.web.app"),
 };
 
 export default function RootLayout({ children }: Readonly<{ children: React.ReactNode }>) {

@@ -1,0 +1,38 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 100 100">
+  <defs>
+    <linearGradient id="cakeGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFD166;stop-opacity:1" />
+      <stop offset="50%" style="stop-color:#F9C5D1;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#A1C4FD;stop-opacity:1" />
+    </linearGradient>
+    <linearGradient id="backgroundGradient" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#FFF9F5;stop-opacity:1" />
+      <stop offset="100%" style="stop-color:#FFF5F0;stop-opacity:1" />
+    </linearGradient>
+  </defs>
+  
+  <!-- 배경 -->
+  <circle cx="50" cy="50" r="48" fill="url(#backgroundGradient)" stroke="#F9C5D1" stroke-width="2"/>
+  
+  <!-- 케이크 베이스 -->
+  <rect x="25" y="45" width="50" height="25" rx="3" fill="url(#cakeGradient)"/>
+  
+  <!-- 케이크 상단 -->
+  <rect x="30" y="35" width="40" height="15" rx="2" fill="#FFD166"/>
+  
+  <!-- 촛불 -->
+  <rect x="47" y="25" width="2" height="12" fill="#8B4513"/>
+  <rect x="51" y="25" width="2" height="12" fill="#8B4513"/>
+  
+  <!-- 불꽃 -->
+  <circle cx="48" cy="23" r="2" fill="#FF6B6B"/>
+  <circle cx="52" cy="23" r="2" fill="#FF6B6B"/>
+  
+  <!-- 장식 -->
+  <circle cx="35" cy="42" r="2" fill="#FF69B4"/>
+  <circle cx="50" cy="40" r="2" fill="#FF69B4"/>
+  <circle cx="65" cy="42" r="2" fill="#FF69B4"/>
+  
+  <!-- 하트 -->
+  <text x="50" y="80" text-anchor="middle" font-size="12" fill="#F9C5D1">♡</text>
+</svg> 

@@ -30,7 +30,7 @@ export const metadata: Metadata = {
     description: "소중한 우리 우진이의 첫돌에 초대합니다.",
     images: [
       {
-        url: "/images/cover.jpg",
+        url: "/images/woojin/woojin-01.jpeg",
         width: 1200,
         height: 630,
         alt: "우진이의 첫돌 초대장",
@@ -43,7 +43,7 @@ export const metadata: Metadata = {
     card: "summary_large_image",
     title: "첫돌 초대장 | 우진이의 돌잔치",
     description: "소중한 우리 우진이의 첫돌에 초대합니다.",
-    images: ["/images/cover.jpg"],
+    images: ["/images/woojin/woojin-01.jpeg"],
   },
   metadataBase: new URL("https://dol-project-45f85.web.app"),
 };
